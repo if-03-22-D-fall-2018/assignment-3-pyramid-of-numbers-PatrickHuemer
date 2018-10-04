@@ -1,9 +1,9 @@
 /*----------------------------------------------------------
- *				HTBLA-Leonding / Class: <your class>
+ *				HTBLA-Leonding / Class: 2DHIF
  * ---------------------------------------------------------
  * Exercise Number: 0
  * Title:			Pyramid of Numbers
- * Author:			<your name>
+ * Author:			Patrick Huemer
  * ----------------------------------------------------------
  * Description:
  * Calculates a pyramid of numbers, i.e., it multiplies a big
@@ -76,5 +76,11 @@ void copy_big_int(const struct BigInt *from, struct BigInt *to);
 */
 int main(int argc, char *argv[])
 {
+	char string[MAX_DIGITS];
+	printf("Pyramid of numbers\n");
+	printf("\n");
+	printf("Please enter a number: ");
+	scanf("%s\n",string);
+
 	return 0;
 }
