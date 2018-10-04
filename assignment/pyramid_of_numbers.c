@@ -38,7 +38,8 @@ struct BigInt {
 * @return The number of characters converted.
 */
 int strtobig_int(const char *str, int len, struct BigInt *big_int){
-
+	int counter;
+	
 }
 
 /** print_big_int() prints a BigInt.
