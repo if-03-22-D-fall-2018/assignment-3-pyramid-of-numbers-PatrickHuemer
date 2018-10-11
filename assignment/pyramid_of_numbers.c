@@ -51,14 +51,28 @@ int strtobig_int(const char *str, int len, struct BigInt *big_int){
 /** print_big_int() prints a BigInt.
 *** @param *big_int The BigInt to be printed.
 */
-void print_big_int(const struct BigInt *big_int);
+void print_big_int(const struct BigInt *big_int){
+	for (size_t i = 0; i < big_int -> digits_count; i++) {
+		printf("%d\n",big_int -> the_int[i] );
+	}
+}
 
 /** multiply() multiplies a BigInt by an int.
 *** @param big_int The BigInt to be multiplied.
 *** @param factor The int value which is multiplied by BigInt.
 *** @param *big_result The result of the multiplication.
 */
-void multiply(const struct BigInt *big_int, int factor, struct BigInt *big_result);
+void multiply(const struct BigInt *big_int, int factor, struct BigInt *big_result){
+	int overflow = 0;
+	for (size_t i = 0; i < big_int->digits_count; i++) {
+		big_result->the_int[i] = big_int->the_int[i] * factor;
+		if (big_result->the_int[i] > 9) {
+			big_result->the_int[i] += overflow;
+			overflow = big_result->the_int[i] / 10;
+			big_result->the_int[i] = big_result->the_int[i] % 10;
+		}
+	}
+}
 
 /** divide() multiplies a BigInt by an int.
 *** @param big_int The BigInt to be divided.
@@ -86,6 +100,7 @@ void copy_big_int(const struct BigInt *from, struct BigInt *to);
 */
 int main(int argc, char *argv[])
 {
+	struct BigInt big_result;
 	struct BigInt big_int;
 	char string[MAX_DIGITS];
 	int length;
