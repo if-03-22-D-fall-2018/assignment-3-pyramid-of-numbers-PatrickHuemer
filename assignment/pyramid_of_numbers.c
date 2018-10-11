@@ -39,7 +39,13 @@ struct BigInt {
 */
 int strtobig_int(const char *str, int len, struct BigInt *big_int){
 	int counter;
-	
+	for (size_t i = 0; i < len; i++) {
+		if (str[i] >= '0' && str[i] <= '9') {
+			big_int->the_int[i] = str[i];
+			counter ++;
+		}
+	}
+	return counter;
 }
 
 /** print_big_int() prints a BigInt.
