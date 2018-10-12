@@ -104,13 +104,19 @@ int main(int argc, char *argv[])
 	struct BigInt big_int;
 	char string[MAX_DIGITS];
 	int length;
+	int factor;
 
 	printf("Pyramid of numbers\n");
 	printf("\n");
 	printf("Please enter a number: ");
-	scanf("%s\n",string);
+	scanf("%s",string);
 	length = strlen(string);
 	strtobig_int(string, length, &big_int);
+	for (size_t i = 2; i < 9; i++) {
+		factor = i;
+		multiply(&big_int, factor, &big_result);
+		print_big_int(&big_int);
+	}
 
 	return 0;
 }
